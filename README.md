@@ -1,8 +1,10 @@
-# GuildChatAI
+# GuildChatBridge
 
-**Author:** Babuni.dev
+**By:** Babuni
 
-A guild-chat capture and manual-send experiment for WoW. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+This is my early World of Warcraft guild-chat experiment, originally called **GuildChatAI**. I renamed its GitHub repository to **GuildChatBridge** because its existing functionality is about capturing guild messages and sending manually supplied text, not generating responses with AI. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+
+The repository is now [GuildChatBridge](https://github.com/babunidev/GuildChatBridge), but the installed addon still uses `GuildChatAI.lua`, `GuildChatAI.toc`, `GuildChatAIDB` and the `/gcai` command. The repository rename did not change these identifiers.
 
 ## Installation and use
 
@@ -20,7 +22,7 @@ Install `GuildChatAI.toc` and `GuildChatAI.lua` directly under `Interface/AddOns
 
 ## Evidence and status
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatAI/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
 
 ## Documentation
 

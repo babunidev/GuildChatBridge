@@ -1,6 +1,6 @@
-# GuildChatAI — decisions and evidence
+# GuildChatBridge — decisions and evidence
 
-**Project author and creative direction:** Babuni.dev
+**Project author and creative direction:** Babuni
 
 | Implemented choice | Evidence | Interpretation boundary |
 | --- | --- | --- |
@@ -23,9 +23,9 @@ These are source-observed choices and proposed checks, not invented historical a
 
 The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
 
-# GuildChatAI — design evidence and decisions
+# GuildChatBridge — design evidence and decisions
 
-**Author:** Babuni.dev
+**Author:** Babuni
 
 ## Source-observed approach (not a recovered approval)
 
@@ -35,3 +35,7 @@ The current code performs message capture and transmission; no external language
 
 - Whether the current code exactly matches the author's desired interaction on the target client is not independently verified.
 - No previously rejected alternatives or historical approvals are claimed without direct records.
+
+## 2026-10-31 — naming decision
+
+I chose **GuildChatBridge** as the GitHub repository name to describe the current guild-chat bridge experiment without suggesting that it already generates AI replies. The installed addon still uses the historical `GuildChatAI` identifiers. This is a documentation and repository naming change, not a runtime migration.

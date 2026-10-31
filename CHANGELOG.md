@@ -1,6 +1,6 @@
-# GuildChatAI — change history
+# GuildChatBridge — change history
 
-**Project author and creative direction:** Babuni.dev
+**Project author and creative direction:** Babuni
 
 ## 2026-10-26 — documentation expansion
 
@@ -8,8 +8,8 @@ Expanded usage, concept, architecture, experience design, content inventory, evi
 
 ## Dated repository evidence
 
-- **2025-08-20** — [bd6afe4](https://github.com/babunidev/GuildChatAI/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d): Initial Lua upload contains the message capture, roster refresh and manual-send paths; inspected diff demonstrates no model integration.
-- **2025-08-20** — [244f603](https://github.com/babunidev/GuildChatAI/commit/244f60387b01cc14188b029fb3bc2b7d67f46216): Manifest added, as recorded by the commit list; no release number is declared.
+- **2025-08-20** — [bd6afe4](https://github.com/babunidev/GuildChatBridge/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d): Initial Lua upload contains the message capture, roster refresh and manual-send paths; inspected diff demonstrates no model integration.
+- **2025-08-20** — [244f603](https://github.com/babunidev/GuildChatBridge/commit/244f60387b01cc14188b029fb3bc2b7d67f46216): Manifest added, as recorded by the commit list; no release number is declared.
 
 Dates come from GitHub commit metadata and are not invented release dates. Generic Update titles do not justify detailed bug-fix narratives.
 
@@ -17,9 +17,9 @@ Dates come from GitHub commit metadata and are not invented release dates. Gener
 
 The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
 
-# GuildChatAI — changelog
+# GuildChatBridge — changelog
 
-**Author:** Babuni.dev
+**Author:** Babuni
 
 ## 2026-10-26 — documentation baseline
 
@@ -29,3 +29,9 @@ The following earlier record is retained verbatim. Statements about unavailable 
 ## Earlier work
 
 The source predates this documentation baseline. Earlier development dates and decisions are not reconstructed as factual releases without supporting evidence.
+
+## 2026-10-31 — repository documentation naming
+
+- I renamed the GitHub repository from `GuildChatAI` to `GuildChatBridge`.
+- With AI assistance, I updated current documentation titles, bylines and repository links while preserving references to the existing Lua/TOC filenames and `/gcai` command.
+- Documentation only; no addon behavior was changed or tested.

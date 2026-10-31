@@ -1,6 +1,6 @@
-# GuildChatAI — roadmap
+# GuildChatBridge — roadmap
 
-**Project author and creative direction:** Babuni.dev
+**Project author and creative direction:** Babuni
 
 ## Current implementation
 
@@ -20,9 +20,9 @@ No new gameplay feature or release is approved by this documentation pass. Resol
 
 The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
 
-# GuildChatAI — roadmap
+# GuildChatBridge — roadmap
 
-**Author:** Babuni.dev
+**Author:** Babuni
 
 ## Current snapshot
 

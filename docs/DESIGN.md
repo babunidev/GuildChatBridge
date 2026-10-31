@@ -1,6 +1,6 @@
-# GuildChatAI — experience design
+# GuildChatBridge — experience design
 
-**Project author and creative direction:** Babuni.dev
+**Project author and creative direction:** Babuni
 
 The observable interaction separates capture from deliberate manual transmission. A possible future AI-assisted guild interface is a reconstruction from the name, manifest notes and source comment; it is not a delivered feature or recovered approval. The original README description, “a very secret guild chat project”, is preserved in the historical record below.
 

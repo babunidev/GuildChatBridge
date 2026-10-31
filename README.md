@@ -1,34 +1,38 @@
 # GuildChatBridge
 
-**By:** Babuni
+**Creative direction:** Babuni  
+**Status:** Paused experiment; not a functioning AI character
 
-This is my early World of Warcraft guild-chat experiment, originally called **GuildChatAI**. I renamed its GitHub repository to **GuildChatBridge** because its existing functionality is about capturing guild messages and sending manually supplied text, not generating responses with AI. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+GuildChatBridge began with a roleplaying idea: what if my World of Warcraft character could have a voice of their own? While I controlled movement, combat and other actions, a local AI could notice what happened around the character, interpret guild conversation and occasionally speak in character. The aim was not a gameplay bot. It was an experiment in giving a player-controlled character a second, partly independent social life.
 
-The repository is now [GuildChatBridge](https://github.com/babunidev/GuildChatBridge), but the installed addon still uses `GuildChatAI.lua`, `GuildChatAI.toc`, `GuildChatAIDB` and the `/gcai` command. The repository rename did not change these identifiers.
+The first ambition was an AI that could read guild chat and respond there without my composing every line. Later possibilities included reactions to crafting, fighting, loot and nearby events, with party or raid conversations as possible extensions. The character should speak when something mattered to them, not fill every silence.
 
-## Installation and use
+## Why the project is paused
 
-Install `GuildChatAI.toc` and `GuildChatAI.lua` directly under `Interface/AddOns/GuildChatAI/`, restart the client and enable the addon. The manifest targets interface 11200, but compatibility is unverified.
+The original attempt stalled because I could not complete the automatic conversation loop with the tools and access available to me. At the time, I understood sending chat to require direct player input, and did not want to rely on unsupported or intrusive workarounds.
 
-`/gcai hello` attempts to send `hello` to GUILD. It does not ask an AI to compose it. Empty input prints usage. Received guild messages are appended to `GuildChatAIDB.guildMessages`; roster names are stored in `guildRoster`. Chat history and player names are retained locally; no export or deletion UI is implemented.
+That explanation needs one technical qualification: `SendChatMessage` exists, and this prototype itself calls it for guild chat. Available API references and examples of 1.12-era addons show that automatic chat transmission is not categorically impossible. What remains unsolved here is a **reliable, permitted, live connection between game events, an external AI and in-game speech**, including the rules of the particular server. No autonomous response loop is implemented or verified. See [architecture](docs/ARCHITECTURE.md) and [decisions](docs/DECISIONS.md).
 
-## Limitations and verification
+The idea remains on ice rather than abandoned. An AI that *suggests* character-appropriate lines for me to choose from is a possible future direction, not an implemented feature or a decision to resume development. A separate roleplaying-assistant concept should not be confused with this project.
 
-- Validate Lua syntax, addon varargs and callback argument conventions against the intended 1.12 client; interface 11200 alone does not establish compatibility.
-- Check `%f` timestamp handling, saved-variable initialization timing and malformed existing DB tables.
-- Check whether calling `GuildRoster()` inside its update event causes repeated requests/events.
-- Verify guild membership and send failures; the command prints confirmation after requesting a send, without delivery acknowledgement.
-- Decide retention and clearing behavior before extended use; storage grows without a bound and printed text does not ensure disk chat logging.
+## What the repository actually contains
 
-## Evidence and status
+The installed addon still uses its original name, **GuildChatAI**. Its Lua source attempts to:
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+- Capture `CHAT_MSG_GUILD` messages and guild-roster names in `GuildChatAIDB`.
+- Print received messages to the chat frame.
+- Send text manually supplied through `/gcai <message>` using `SendChatMessage(msg, "GUILD")`.
+
+It does **not** include an AI model, external process, network bridge, generated dialogue, automatic replies or activity-based personality. The code has not been verified in a live client during these documentation reviews.
+
+### Installation snapshot — unverified
+
+The source layout suggests placing `GuildChatAI.lua` and `GuildChatAI.toc` inside `Interface/AddOns/GuildChatAI/`. The manifest declares interface `11200`. Actual 1.12 compatibility and loading behavior still require testing. The slash command sends user-provided text, not AI output.
+
+The repository name changed from `GuildChatAI` to `GuildChatBridge` on October 31, 2026. Lua and TOC filenames, `GuildChatAIDB` and `/gcai` were intentionally left unchanged.
 
 ## Documentation
 
-- [Concept](CONCEPT.md) · [Design](docs/DESIGN.md) · [Content](docs/CONTENT.md)
-- [Architecture](docs/ARCHITECTURE.md) · [Decisions](docs/DECISIONS.md)
-- [Roadmap](ROADMAP.md) · [Changelog](CHANGELOG.md) · [Development journal](docs/DEVLOG.md)
-- [AI collaboration](docs/AI_COLLABORATION.md) · [Contributor instructions](AGENTS.md)
+[Concept](CONCEPT.md) · [Roadmap](ROADMAP.md) · [Architecture](docs/ARCHITECTURE.md) · [Experience design](docs/DESIGN.md) · [Content](docs/CONTENT.md) · [Decisions](docs/DECISIONS.md) · [Development journal](docs/DEVLOG.md) · [Changelog](CHANGELOG.md) · [AI collaboration](docs/AI_COLLABORATION.md) · [Development rules](AGENTS.md)
 
-The [historical README](docs/HISTORICAL_README.md) is retained verbatim as prior documentation, including any outdated claims. Current source and the qualifications above take precedence.
+The [historical README](docs/HISTORICAL_README.md) remains an unmodified archival snapshot. This README describes the present understanding, not a verified release.

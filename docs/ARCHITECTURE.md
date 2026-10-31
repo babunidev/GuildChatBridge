@@ -1,31 +1,43 @@
-# GuildChatBridge — architecture
+# GuildChatBridge — architecture and technical limits
 
-**Project author and creative direction:** Babuni
+## Existing implementation
 
-`GuildChatAI.lua` creates one frame for `ADDON_LOADED`, `CHAT_MSG_GUILD` and `GUILD_ROSTER_UPDATE`. The message handler appends `{timestamp, sender, message}` records and prints a formatted copy. The roster handler clears the roster table, calls `GuildRoster()` and rebuilds a name-to-true map using `GetNumGuildMembers` and `GetGuildRosterInfo`. `/gcai` directly calls `SendChatMessage(msg, "GUILD")`.
+The repository contains `GuildChatAI.lua` and `GuildChatAI.toc`, not an external AI application. The manifest declares interface `11200` and account-wide `GuildChatAIDB`.
 
-The TOC declares account-wide `GuildChatAIDB`. Initialization uses `GuildChatAIDB or { guildMessages = {}, guildRoster = {} }` at file load; it does not validate or migrate existing table shapes. There is no retention limit, network component, queue, model layer, options window or automated test suite in the inspected tree.
+The Lua source creates a frame, registers `ADDON_LOADED`, `CHAT_MSG_GUILD` and `GUILD_ROSTER_UPDATE`, and attempts the following:
 
-## Evidence and status
+| Path | Observed code | Not established |
+| --- | --- | --- |
+| Guild messages | Appends timestamp, sender and message to `guildMessages`; prints a copy | Persistent disk chat logging or successful client execution |
+| Guild roster | Clears and repopulates a name-to-true map via guild-roster functions | Stable event behavior or complete member metadata |
+| Manual send | `/gcai <message>` calls `SendChatMessage(msg, "GUILD")` | Delivery acknowledgement or AI-composed text |
+| Saved data | Uses `GuildChatAIDB` declared in the TOC | Safe initialization for every client/load order, retention or migration |
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+No network client, localhost API, model invocation, event-to-model queue, character memory, generation prompts or autonomous sending loop exists in this source. Capturing text in an addon is not equivalent to transmitting it to a local application.
 
-## Preserved earlier documentation
+## Why the intended end-to-end system is unfinished
 
-The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
+A future implementation would need three independently working stages:
 
-# GuildChatBridge — architecture snapshot
+1. **Observation:** Collect only events exposed by the intended client (guild or group messages and relevant activities).
+2. **AI bridge:** Transfer selected observations to a local model promptly through a supported, permitted route, then receive a response.
+3. **Expression:** Show a proposed line to the player or transmit it in an allowed channel, with rate and consent controls.
 
-**Author:** Babuni
+These are **conceptual components**, not implemented modules. Standard SavedVariables write on logout/reload rather than serving as a continuously updated external message stream. A client addon also should not be assumed to have arbitrary file, socket or HTTP access. Both directions of any external bridge require actual verification.
 
-## File inventory
+## Important correction about chat sending
 
-`GuildChatAI.lua`, `GuildChatAI.toc`, `README.md`, `LICENSE`
+The existing code contains `SendChatMessage(msg, "GUILD")`. Modern WoW API documentation distinguishes guild/party/raid chat from channels requiring hardware interaction, and historical 1.12.1 addon examples describe timer-based chat messages. Thus `all in-game chat requires Enter or paste` is not a reliable general rule. Neither those references nor this source establish permission or success for a fully automatic AI character on the intended realm.
 
-## Observed implementation
+References: [SendChatMessage API](https://warcraft.wiki.gg/wiki/API_SendChatMessage), [1.12.1 automatic-message addon example](https://github.com/0ldi/AutoMessage), [SavedVariables lifecycle](https://warcraft.wiki.gg/wiki/Saved_variables).
 
-`GuildChatAI.lua` registers `ADDON_LOADED`, `CHAT_MSG_GUILD`, and `GUILD_ROSTER_UPDATE`, writes into `GuildChatAIDB` and prints captured messages; `/gcai` forwards user-provided text to guild chat. `GuildChatAI.toc` declares interface 11200.
+## Client-compatibility and correctness checks
 
-## Verification boundary
+- The legacy 1.12 client uses Lua 5.0 conventions; inspect event callback parameters and `...` usage rather than assuming modern `self, event, ...` behavior.
+- Check saved-variable initialization at `ADDON_LOADED`, including preexisting/malformed tables.
+- Check `date("%m/%d %H:%M:%S.%f")`: fractional seconds are not safely assumed supported.
+- Test whether invoking `GuildRoster()` from `GUILD_ROSTER_UPDATE` causes excess updates.
+- Verify guild presence, chat permission, throttling, error handling and whether the apparent send confirmation corresponds to actual delivery.
+- Set a retention/deletion policy before retaining other players' chat logs for prolonged periods.
 
-This description comes from reading source and metadata; it does not establish successful operation in a live game client.
+The code was inspected as text; no in-game or automated compatibility test was run during this documentation revision.

@@ -1,15 +1,21 @@
-# GuildChatBridge — experience design
+# GuildChatBridge — intended experience
 
-**Project author and creative direction:** Babuni
+## The imagined interaction
 
-The observable interaction separates capture from deliberate manual transmission. A possible future AI-assisted guild interface is a reconstruction from the name, manifest notes and source comment; it is not a delivered feature or recovered approval. The original README description, “a very secret guild chat project”, is preserved in the historical record below.
+During ordinary gameplay, I would continue making the decisions that move my character through the world. Their voice, however, might develop its own small life. Guildmates could be chatting while the character noticed something relevant, formed an opinion and occasionally joined the conversation in character.
 
-Printed copies may help a player inspect messages, but a source comment claiming they ensure `WoWChatLog.txt` output is not proof that client file logging is enabled. Roster snapshots contain names only, not ranks, membership history or a conversation model.
+Crafting, combat and loot were examples of context the AI might use, not features already captured by the addon. Guild chat was the main setting; party and raid channels were possible expansions.
 
-## Verification priorities
+The distinction from a traditional chatbot is important: the character would not simply answer every incoming message. Context, personality and selective interest were central to the intended illusion.
 
-- Validate Lua syntax, addon varargs and callback argument conventions against the intended 1.12 client; interface 11200 alone does not establish compatibility.
-- Check `%f` timestamp handling, saved-variable initialization timing and malformed existing DB tables.
-- Check whether calling `GuildRoster()` inside its update event causes repeated requests/events.
-- Verify guild membership and send failures; the command prints confirmation after requesting a send, without delivery acknowledgement.
-- Decide retention and clearing behavior before extended use; storage grows without a bound and printed text does not ensure disk chat logging.
+## What the current addon feels like
+
+The code does something much smaller. It collects guild-message text and names, prints captured messages and offers `/gcai` to send text typed by the player. There is no character voice, contextual awareness, UI for proposed dialogue, or AI interaction. This interaction has not been tested in the intended game client during the documentation review.
+
+## Boundaries for any redesign
+
+The most interesting design challenge is also the social risk. An autonomous roleplayed character should not bury guild conversations, confuse people about who is speaking or continue when the player wants silence.
+
+Ideas worth investigating, **not approved features**, include clear disclosure, channel selection, conservative response frequency, a prominent off control and a manual suggestion mode. Automatic publishing must be considered separately from generating interesting text. Technical feasibility alone would not settle whether the result belongs in a shared game.
+
+This project concerns the character speaking in guild and group life; a separate roleplaying speech assistant is not a replacement for this concept.

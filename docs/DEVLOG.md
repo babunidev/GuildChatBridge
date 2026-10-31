@@ -1,46 +1,21 @@
 # GuildChatBridge — development journal
 
-**Project author and creative direction:** Babuni
+**A first-person account from the human creative.** Dates for the original motivation are reconstructed retrospectively unless tied to a commit.
 
-## Evidence-based retrospective — 2026-10-26
+## August 2025 — a small beginning (retrospective)
 
-- **2025-08-20** — [bd6afe4](https://github.com/babunidev/GuildChatBridge/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d): Initial Lua upload contains the message capture, roster refresh and manual-send paths; inspected diff demonstrates no model integration.
-- **2025-08-20** — [244f603](https://github.com/babunidev/GuildChatBridge/commit/244f60387b01cc14188b029fb3bc2b7d67f46216): Manifest added, as recorded by the commit list; no release number is declared.
+The experiment grew out of my interest in giving roleplayed characters a life beyond the words I typed for them. Guild chat seemed a natural place to begin: a character could listen, develop opinions and eventually contribute in their own voice while I continued controlling their adventures. The source committed on [August 20](https://github.com/babunidev/GuildChatBridge/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d) records only a first step—guild-message capture, roster handling and manual text sending—not the AI character I had imagined.
 
-## Present implementation and interpretation
+## October 26, 2026 — documenting what existed
 
-A guild-chat capture and manual-send experiment for WoW. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+An AI-assisted repository review separated visible code from the much larger ambition implied by the original name. The resulting documentation described what the Lua source attempted, noted untested client compatibility and avoided claiming that an AI response engine had been built. That work clarified the prototype, although the creative reason behind it was still missing.
 
-The observable interaction separates capture from deliberate manual transmission. A possible future AI-assisted guild interface is a reconstruction from the name, manifest notes and source comment; it is not a delivered feature or recovered approval. The original README description, “a very secret guild chat project”, is preserved in the historical record below.
+## October 31, 2026 — naming the project and remembering the idea
 
-Printed copies may help a player inspect messages, but a source comment claiming they ensure `WoWChatLog.txt` output is not proof that client file logging is enabled. Roster snapshots contain names only, not ranks, membership history or a conversation model.
+The repository became **GuildChatBridge** instead of **GuildChatAI**, while the original installed-addon files and commands stayed as they were. Returning to the concept, I explained what had really interested me: moving through the world as my character while a second, AI-shaped voice noticed guild discussions, crafting, fights or loot and occasionally spoke for itself.
 
-## Evidence and status
+The project had gone on ice because the automatic conversation loop remained out of reach with the approach and access I was prepared to use. During this review, AI assistance also found that `SendChatMessage` and examples from 1.12-era addons undermine the blanket assumption that every guild message requires a manual Enter press. That does not solve the missing local-AI connection or the question of what a server would permit. For now, preserving the experiment and its unanswered questions feels more faithful than calling it either finished or impossible.
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+## Verification boundary
 
-## Documentation authorship
-
-I directed the project, and I used AI assistance to inspect files and selected commit diffs, identify inconsistencies and draft documentation. Historical conversations, personal motives, prior approvals and any earlier AI involvement were not recovered or invented.
-
-## Preserved earlier documentation
-
-The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
-
-# GuildChatBridge — development record
-
-**Author:** Babuni
-
-## Retrospective source reconstruction — 2026-10-26
-
-The repository preserves a small, focused WoW experiment. A guild-chat logging experiment that stores guild chat messages and guild-roster names and exposes `/gcai` to send a supplied message to guild chat. Explore using guild chat as a record and possible interface for later AI-assisted interaction. The visible implementation supplies the clearest record of how the interaction was approached: `GuildChatAI.lua` registers `ADDON_LOADED`, `CHAT_MSG_GUILD`, and `GUILD_ROSTER_UPDATE`, writes into `GuildChatAIDB` and prints captured messages; `/gcai` forwards user-provided text to guild chat. `GuildChatAI.toc` declares interface 11200.
-
-This is a retrospective reconstruction, not a transcript of original design discussions. The current code performs message capture and transmission; no external language model call, AI generation, or working integration bridge is present in the inspected source. Its source and metadata existed before the current documentation pass; original conception and iteration dates are not recoverable from these files alone. In this pass, AI assistance organized the existing evidence into documentation, without changing gameplay or attributing the original idea to AI.
-
-## Verification
-
-Evidence: current `README.md`, addon `.toc` metadata and inspected main `.lua` source; no full historical conversation or runtime test was available. Test against the declared WoW client version; inspect API and Lua syntax compatibility, timestamp formatting and guild-roster event behavior; do not claim that an AI bot is implemented.
-
-## October 31, 2026 — a clearer name
-
-The repository is now named **GuildChatBridge**, after I renamed it from **GuildChatAI**. The current code captures guild messages and roster information and sends manually supplied text; it does not implement an AI response generator. At my request, an AI assistant revised the project documentation to reflect the rename. The original Lua and TOC filenames, `GuildChatAIDB` and `/gcai` are unchanged. This was documentation work, not a new runtime test.
+This journal records my account and checked repository evidence. AI assistance reviewed documentation and source; no runtime feature was added or game-client test performed in the October 31 documentation revision. The original chronology of private design discussions remains unknown.

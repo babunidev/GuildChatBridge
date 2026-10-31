@@ -1,41 +1,30 @@
-# GuildChatBridge — decisions and evidence
+# GuildChatBridge — decisions and unresolved questions
 
-**Project author and creative direction:** Babuni
+## Established human creative direction
 
-| Implemented choice | Evidence | Interpretation boundary |
+**Original experiment (recounted 2026-10-31).** The idea was to let my player-controlled WoW character develop an independent conversational presence. Guild chat was the priority; relevant gameplay events and possibly party/raid chat could broaden their awareness. The player would still control movement and gameplay actions.
+
+**Putting the experiment on ice (recounted 2026-10-31).** The attempted implementation did not deliver the autonomous conversation loop. Believing that chat output depended on direct user input, and unwilling to use unavailable or questionable interfaces, I paused the project instead of presenting a partial system as complete.
+
+**Keeping the project (recounted 2026-10-31).** The repository remains available because the underlying roleplaying experiment still interests me. This does not authorize renewed development or choose a replacement design.
+
+**Name change (2026-10-31).** The repository changed from `GuildChatAI` to `GuildChatBridge` to describe the present bridge experiment without implying that AI reply generation exists. Runtime identifiers remain unchanged.
+
+## Source-observed implementation, not recovered design approvals
+
+| Existing code | Evidence | Limitation |
 | --- | --- | --- |
-| Keep received text locally | `guildMessages` append and TOC SavedVariables | No retention policy or historical approval recovered |
-| Send user-supplied text | `/gcai` handler | “AI responses” comment does not demonstrate AI generation |
-| Refresh roster on event | `GUILD_ROSTER_UPDATE` handler | Re-entrant refresh risk remains untested |
-| Print messages | `print` calls | Disk log creation is unverified |
+| Local guild-message capture | `CHAT_MSG_GUILD` and `guildMessages` | No live external stream |
+| Stored roster names | `GUILD_ROSTER_UPDATE` and `guildRoster` | No rich guild relationship model |
+| User-supplied guild chat send | `/gcai` and `SendChatMessage` | Not an AI response loop |
+| Printed message copies | `print` call | Does not prove disk chat logging |
 
-## Open verification
+## Open technical and social questions
 
-- Validate Lua syntax, addon varargs and callback argument conventions against the intended 1.12 client; interface 11200 alone does not establish compatibility.
-- Check `%f` timestamp handling, saved-variable initialization timing and malformed existing DB tables.
-- Check whether calling `GuildRoster()` inside its update event causes repeated requests/events.
-- Verify guild membership and send failures; the command prints confirmation after requesting a send, without delivery acknowledgement.
-- Decide retention and clearing behavior before extended use; storage grows without a bound and printed text does not ensure disk chat logging.
+The original assumption about needing keyboard confirmation for **every** guild message is not confirmed by the available APIs and historical examples. This changes how the technical obstacle should be described, without changing the fact that the original project was paused. A functioning local-AI exchange, verified 1.12 compatibility, specific server rules, and acceptable player-facing behavior remain open.
 
-These are source-observed choices and proposed checks, not invented historical approvals or an approved feature backlog.
+Possible directions include an AI that **suggests** messages for manual selection or a tightly controlled autonomous voice, if allowed. Neither is currently an adopted implementation plan. The separate speech-based roleplaying-helper project should retain its own scope.
 
-## Preserved earlier documentation
+## Attribution and evidence
 
-The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
-
-# GuildChatBridge — design evidence and decisions
-
-**Author:** Babuni
-
-## Source-observed approach (not a recovered approval)
-
-The current code performs message capture and transmission; no external language model call, AI generation, or working integration bridge is present in the inspected source.
-
-## Open questions
-
-- Whether the current code exactly matches the author's desired interaction on the target client is not independently verified.
-- No previously rejected alternatives or historical approvals are claimed without direct records.
-
-## 2026-10-31 — naming decision
-
-I chose **GuildChatBridge** as the GitHub repository name to describe the current guild-chat bridge experiment without suggesting that it already generates AI replies. The installed addon still uses the historical `GuildChatAI` identifiers. This is a documentation and repository naming change, not a runtime migration.
+These creative decisions were supplied directly by the human creative on 2026-10-31; their original dates are not independently established. The code-based observations come from the existing repository. AI assistance analyzed and documented the distinction; it did not originate the original idea or decide to restart the project.

@@ -1,37 +1,30 @@
 # GuildChatBridge — concept
 
-**Project author and creative direction:** Babuni
+**Creative:** Babuni  
+**Stage:** Paused exploration
 
-I originally explored guild-chat capture and manual message sending in WoW. The repo now carries the name **GuildChatBridge**, which better describes the functionality visible in the source. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+## A character with a life of their own
 
-The observable interaction separates capture from deliberate manual transmission. A possible future AI-assisted guild interface is a reconstruction from the name, manifest notes and source comment; it is not a delivered feature or recovered approval. The original README description, “a very secret guild chat project”, is preserved in the historical record below.
+The idea came from enjoying roleplay while wondering whether the character could contribute more than the actions and words I explicitly chose. In the experiment I imagined, the player would still steer the character through Azeroth, but an AI would shape their conversational voice.
 
-Printed copies may help a player inspect messages, but a source comment claiming they ensure `WoWChatLog.txt` output is not proof that client file logging is enabled. Roster snapshots contain names only, not ranks, membership history or a conversation model.
+Guild chat was the starting point. The character could follow discussions, decide whether something interested them and respond in their own manner. Through game events, they might notice crafting, combat, items collected or changes in the surrounding world. Those observations could become small opinions, stories or remarks. Party and raid chat were possible later extensions, not established features.
 
-## Evidence and status
+The desired feeling was closer to an AI-driven NPC sharing a player's journey than a conventional command-based chatbot. Yet this was never intended to transfer gameplay control to the AI: movement and actions would remain mine.
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+## The interesting boundary
 
-## Preserved earlier documentation
+A character that speaks independently might feel alive, but one that talks too much, interrupts players or impersonates genuine human attention could quickly become unwelcome. Part of the experiment was finding the narrow space where that behavior might be playful and respectful of the people sharing the game.
 
-The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
+Meaningful silence matters as much as speech. The imagined character would have interests and context rather than simply reply to every guild message. Any future design needs transparent AI participation and should respect server rules, consent, chat volume and the ability to disable responses.
 
-# GuildChatBridge — concept
+## Why it stopped, and why it remains
 
-**Author:** Babuni
+The original vision required an end-to-end loop: observe the game, bring the observations to an AI, let the AI decide what to say and deliver the result in game. The attempt did not achieve that loop, and I set it aside rather than claim it worked or force a workaround I did not want.
 
-## Existing idea
+The belief that all guild-chat output necessarily requires keyboard confirmation should not be treated as a proven 1.12 API rule. Chat sending exists in the source; external AI communication, real-time observation and server permission are separate unresolved problems.
 
-A guild-chat logging experiment that stores guild chat messages and guild-roster names and exposes `/gcai` to send a supplied message to guild chat.
+A less autonomous version, in which an AI offers roleplay lines for me to send, remains a **possible direction only**. The separate roleplaying helper concept is not part of GuildChatBridge.
 
-## Intended experience
+## Evidence
 
-Explore using guild chat as a record and possible interface for later AI-assisted interaction.
-
-## Boundaries
-
-The current code performs message capture and transmission; no external language model call, AI generation, or working integration bridge is present in the inspected source.
-
-## Evidence status
-
-Evidence: current `README.md`, addon `.toc` metadata and inspected main `.lua` source; no full historical conversation or runtime test was available.
+This creative account was supplied by me on October 31, 2026, after the original prototype. The repository proves that logging and a manual-send command were written; it does not prove that the imagined AI behavior was implemented, tested or approved for a server. See [the journal](docs/DEVLOG.md) and [architecture](docs/ARCHITECTURE.md).

@@ -1,37 +1,31 @@
 # GuildChatBridge — roadmap
 
-**Project author and creative direction:** Babuni
+**Status:** On ice. There is no approved feature schedule or active release milestone.
 
-## Current implementation
+## Existing prototype — source observed, not runtime verified
 
-A guild-chat capture and manual-send experiment for WoW. It stores received guild messages and roster names, and `/gcai <message>` forwards supplied text to guild chat. There is no demonstrated real AI integration: no model request, response generation, external bridge, credentials, or automatic reply loop exists in the inspected source.
+- [x] Commit a Lua addon and 1.12-interface TOC.
+- [x] Implement code paths for guild-message capture, roster-name storage and a manual `/gcai` send command.
+- [ ] Verify successful loading and operation in the intended game client.
+- [ ] Implement any actual external AI integration or generated response workflow.
 
-## Proposed verification work
+The checked items describe committed source, not successful gameplay tests.
 
-- [ ] Validate Lua syntax, addon varargs and callback argument conventions against the intended 1.12 client; interface 11200 alone does not establish compatibility.
-- [ ] Check `%f` timestamp handling, saved-variable initialization timing and malformed existing DB tables.
-- [ ] Check whether calling `GuildRoster()` inside its update event causes repeated requests/events.
-- [ ] Verify guild membership and send failures; the command prints confirmation after requesting a send, without delivery acknowledgement.
-- [ ] Decide retention and clearing behavior before extended use; storage grows without a bound and printed text does not ensure disk chat logging.
+## Questions to resolve before reconsidering the project
 
-No new gameplay feature or release is approved by this documentation pass. Resolve compatibility findings in a separately scoped implementation change and update this record with actual test results.
+- [ ] Identify the intended client, realm and current server rules on automated chat and external tools.
+- [ ] Test the legacy client APIs, Lua 5.0 event conventions, `SendChatMessage` behavior and chat throttling in a controlled environment.
+- [ ] Establish whether game events can reach a local AI promptly through a permitted interface. `SavedVariables` alone are not a continuous live bridge.
+- [ ] Determine whether any return path for AI-generated text is technically supported and acceptable on that server.
+- [ ] Define moderation, transparency, consent, character voice, rate limits and an immediate off switch.
+- [ ] Fix or document prototype concerns: initialization after saved variables load, date formatting, roster refresh behavior, data retention and delivery reporting.
 
-## Preserved earlier documentation
+## Possible futures — not approved implementation
 
-The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
+**Assisted roleplay:** An external local AI proposes short lines based on permitted observations; the player chooses whether to speak.
 
-# GuildChatBridge — roadmap
+**Limited experimental autonomy:** A character occasionally speaks in guild or group chat, but only if the specific client capabilities, server policy and design safeguards allow it.
 
-**Author:** Babuni
+**Archive only:** Preserve the original idea and findings even if the desired interaction remains impractical.
 
-## Current snapshot
-
-The code and manifest are present on the default branch; this review did not execute the addon. No release or historical feature milestone is inferred from the repository snapshot.
-
-## Verification work (proposed; not approved feature changes)
-
-Test against the declared WoW client version; inspect API and Lua syntax compatibility, timestamp formatting and guild-roster event behavior; do not claim that an AI bot is implemented.
-
-## Future features
-
-None approved or established by this documentation pass. Record new ideas separately before implementation.
+No new code, test outcome or decision to restart development is implied by these possibilities.

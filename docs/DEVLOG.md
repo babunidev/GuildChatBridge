@@ -1,11 +1,11 @@
-# GuildChatAI — development journal
+# GuildChatBridge — development journal
 
-**Project author and creative direction:** Babuni.dev
+**Project author and creative direction:** Babuni
 
 ## Evidence-based retrospective — 2026-10-26
 
-- **2025-08-20** — [bd6afe4](https://github.com/babunidev/GuildChatAI/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d): Initial Lua upload contains the message capture, roster refresh and manual-send paths; inspected diff demonstrates no model integration.
-- **2025-08-20** — [244f603](https://github.com/babunidev/GuildChatAI/commit/244f60387b01cc14188b029fb3bc2b7d67f46216): Manifest added, as recorded by the commit list; no release number is declared.
+- **2025-08-20** — [bd6afe4](https://github.com/babunidev/GuildChatBridge/commit/bd6afe4ab9b9c306ea234525aeef2f67a1617e0d): Initial Lua upload contains the message capture, roster refresh and manual-send paths; inspected diff demonstrates no model integration.
+- **2025-08-20** — [244f603](https://github.com/babunidev/GuildChatBridge/commit/244f60387b01cc14188b029fb3bc2b7d67f46216): Manifest added, as recorded by the commit list; no release number is declared.
 
 ## Present implementation and interpretation
 
@@ -17,19 +17,19 @@ Printed copies may help a player inspect messages, but a source comment claiming
 
 ## Evidence and status
 
-Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatAI/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
+Reviewed on 2026-10-26 against `main` at [c66af0e](https://github.com/babunidev/GuildChatBridge/commit/c66af0eb34e76dd00ee077a8f41fbbc55f4b5523). Current Lua, TOC, README and dated commit history were inspected. Source describes implementation; it does not establish successful operation. Historical intent is reconstructed only where labeled. No in-client test or automated test was executed during this documentation pass.
 
 ## Documentation authorship
 
-Babuni.dev retains project authorship and creative direction. AI assistance in this pass inspected files and selected commit diffs, identified inconsistencies and drafted documentation. Historical conversations, personal motives, prior approvals and any earlier AI involvement were not recovered or invented.
+I directed the project, and I used AI assistance to inspect files and selected commit diffs, identify inconsistencies and draft documentation. Historical conversations, personal motives, prior approvals and any earlier AI involvement were not recovered or invented.
 
 ## Preserved earlier documentation
 
 The following earlier record is retained verbatim. Statements about unavailable history or pending verification describe that earlier snapshot; the dated evidence above supplements it.
 
-# GuildChatAI — development record
+# GuildChatBridge — development record
 
-**Author:** Babuni.dev
+**Author:** Babuni
 
 ## Retrospective source reconstruction — 2026-10-26
 
@@ -40,3 +40,7 @@ This is a retrospective reconstruction, not a transcript of original design disc
 ## Verification
 
 Evidence: current `README.md`, addon `.toc` metadata and inspected main `.lua` source; no full historical conversation or runtime test was available. Test against the declared WoW client version; inspect API and Lua syntax compatibility, timestamp formatting and guild-roster event behavior; do not claim that an AI bot is implemented.
+
+## October 31, 2026 — a clearer name
+
+The repository is now named **GuildChatBridge**, after I renamed it from **GuildChatAI**. The current code captures guild messages and roster information and sends manually supplied text; it does not implement an AI response generator. At my request, an AI assistant revised the project documentation to reflect the rename. The original Lua and TOC filenames, `GuildChatAIDB` and `/gcai` are unchanged. This was documentation work, not a new runtime test.

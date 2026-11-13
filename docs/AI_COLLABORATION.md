@@ -16,4 +16,4 @@ No live AI character, real-time external bridge, game-client compatibility test 
 
 ## Recording later work
 
-For meaningful changes, preserve my direction and choices, AI's specific contributions, important rejected alternatives, affected paths and commit, and testing results. Technical references can use neutral language; the development journal should remain a concise first-person creative account.
+For meaningful changes, preserve my direction and choices, AI's specific contributions, important rejected alternatives, affected paths and commit, and testing results. Keep the development journal a concise first-person account.

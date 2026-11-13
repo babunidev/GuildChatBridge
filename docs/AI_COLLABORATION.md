@@ -1,5 +1,7 @@
 # GuildChatBridge — AI collaboration and attribution
 
+Follow [the documentation standard](DOCUMENTATION.md) for first-person author voice throughout project documentation, factual changelogs, and naming the AI tool and verified model for each contribution.
+
 ## Who contributed what
 
 The original idea, roleplaying ambition, boundaries and decision to put the project on ice came from me as its human creative. The central experiment was to give my player-controlled character an independent conversational presence in guild chat, potentially informed by their activities in the game.
